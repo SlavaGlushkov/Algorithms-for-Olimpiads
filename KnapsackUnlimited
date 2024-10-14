@@ -29,7 +29,6 @@ public class KnapsackUnlimited {
     //knapsack1 количество предметов в магазине неограниченно
     static int knapsack1(int[] wts, int[] cost, int W)
     {
-        int n = wts.length;
         int[] dp = new int[W + 1];
         dp[0] = 0;
         for (int w = 1; w <= W; w++)
