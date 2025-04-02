@@ -41,6 +41,11 @@ public class InformaticsB {
         else for (int i = 0; i < nominals[W].size(); i++) {
             System.out.print(nominals[W].get(i) + " ");
         }
+        static ArrayList<Integer> changeSet(ArrayList<Integer> arrayList, int value){
+        ArrayList<Integer> arrayList1 = new ArrayList<>(arrayList);
+        arrayList1.add(value);
+        return arrayList1;
+    }
     static void knapsack1(int[] weights, int W)
     {
         //Создаем матрицу в которую будем записывать номиналы
