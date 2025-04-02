@@ -13,7 +13,34 @@ public class InformaticsB {
         }
         int W = sc.nextInt();
         knapsack1(weights, W);
+        knapsackNew(weights, W);
     }
+    static void knapsackNew(int[] weights, int W)
+    {
+        //Создаем матрицу в которую будем записывать номиналы
+        ArrayList<Integer> [] nominals = new ArrayList [W + 1];
+        int[] dp = new int[W + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE - 1);
+        dp[0] = 0;
+        nominals[0] = new ArrayList<>();
+        for (int w = 1; w <= W; w++)
+        {
+            for (int i = 0; i < weights.length; i++)
+            {
+                if (weights[i] <= w)
+                {
+                    //Добавляем к алгоритму запись номиналов
+                    if (dp[w - weights[i]] + 1 < dp[w] )
+                        nominals[w] = changeSet(nominals[w - weights[i]], weights[i]);
+                    dp[w] = Math.min(dp[w], dp[w - weights[i]] + 1);
+                }
+            }
+        }
+        if (nominals[W] == null)
+            System.out.println("No solution");
+        else for (int i = 0; i < nominals[W].size(); i++) {
+            System.out.print(nominals[W].get(i) + " ");
+        }
     static void knapsack1(int[] weights, int W)
     {
         //Создаем матрицу в которую будем записывать номиналы
